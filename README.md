@@ -2,7 +2,7 @@
 
 Chat público em containers OKE com OCI Generative AI, histórico externo em Redis e demonstração de failover entre São Paulo e Vinhedo. Somente o apresentador autenticado pode interromper e restaurar o MCP primário; cada participante conversa em uma sessão própria.
 
-**[Abrir o chat de demonstração](https://racing-brazil-ai.tech/chat/)** · **[Manual do usuário](docs/manual-usuario.md)** · **[Manual técnico de implantação](docs/manual-tecnico.md)**
+**[Abrir o chat de demonstração](test)** · **[Manual do usuário](docs/manual-usuario.md)** · **[Manual técnico de implantação](docs/manual-tecnico.md)**
 
 ![Arquitetura do laboratório](docs/images/arquitetura-publica.png)
 
