@@ -90,10 +90,14 @@ def iam(cfg):
     print('IAM restrito aos quatro workers, inferência Chat no compartment e leitura dos dois repositórios. Aguarde propagação.')
 
 
-def cache(cfg):
+def cache(cfg, regions=REGIONS):
+    if REGIONS[1] in regions and REGIONS[0] not in regions:
+        primary = state().get('cache', {}).get(REGIONS[0], {})
+        if not primary.get('id') or not primary.get('endpoint'):
+            raise ValueError('Crie primeiro o Cache de Sao Paulo e aguarde ACTIVE antes de criar Vinhedo.')
     keys=json.loads((RUNTIME/'secrets.json').read_text())
     observed=state();observed.setdefault('cache',{})
-    for region in REGIONS:
+    for region in regions:
         suffix='gru' if region==REGIONS[0] else 'vcp'
         svc=client(oci.redis.RedisClusterClient,region)
         sets=client(oci.redis.OciCacheConfigSetClient,region)
@@ -185,7 +189,9 @@ def dns(cfg):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('phase',choices=['registry','iam','cache','dns']);p.add_argument('--apply',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('phase',choices=['registry','iam','cache','dns']);p.add_argument('--apply',action='store_true');p.add_argument('--region',choices=REGIONS,help='Cache only: provision one region at a time');args=p.parse_args()
+    if args.region and args.phase != 'cache': p.error('--region se aplica somente a fase cache')
     cfg=config()
-    if not args.apply:print('Plano: fase '+args.phase+' no compartment configurado. Nenhuma alteração aplicada; use --apply após revisar config/lab.json.')
+    if not args.apply:print('Plano: fase '+args.phase+(' na regiao '+args.region if args.region else '')+' no compartment configurado. Nenhuma alteração aplicada; use --apply após revisar config/lab.json.')
+    elif args.phase=='cache':cache(cfg,(args.region,) if args.region else REGIONS)
     else:globals()[args.phase](cfg)

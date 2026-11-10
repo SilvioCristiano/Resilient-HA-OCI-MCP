@@ -12,7 +12,7 @@ Chat público em containers OKE com OCI Generative AI, histórico externo em Red
 | --- | --- |
 | Usar a tela e testar a memória | [Manual do usuário com prints e textos para copiar](docs/manual-usuario.md) |
 | Apresentar e controlar a interrupção | [Acesso do apresentador e controles](docs/manual-usuario.md#6-entrar-como-apresentador) |
-| Reproduzir em outra tenancy OCI | [Manual técnico com 20 etapas](docs/manual-tecnico.md) |
+| Reproduzir em outra tenancy OCI | [Manual técnico visual com 24 passos](docs/manual-tecnico.md) |
 | Compartilhar o material fora do GitHub | [PDF e Word dos dois manuais](docs/downloads/README.md) |
 | Obter todo o código | [Baixar ZIP do repositório](https://github.com/SilvioCristiano/Resilient-HA-OCI-MCP/archive/refs/heads/main.zip) |
 
@@ -22,7 +22,7 @@ O MCP de São Paulo é reduzido de duas para zero réplicas. O DNS passa a indic
 
 O frontend também roda nos dois OKE. O Mac do apresentador não hospeda a aplicação pública. Não há cluster dedicado de IA, Gemini, Autonomous Database ou VM administrativa permanente nesta arquitetura.
 
-A demonstração cobre **falha da aplicação MCP primária**. O Redis gravável e a execução GenAI permanecem em São Paulo. O Cache de Vinhedo recebe replicação nativa assíncrona e fica somente leitura; sua promoção não é automática. Portanto, este projeto não comprova zero downtime, RPO zero regional ou recuperação total em menos de dois segundos. Consulte [os limites do desenho](docs/manual-tecnico.md#18-distinguir-failover-da-aplicação-de-desastre-regional).
+A demonstração cobre **falha da aplicação MCP primária**. O Redis gravável e a execução GenAI permanecem em São Paulo. O Cache de Vinhedo recebe replicação nativa assíncrona e fica somente leitura; sua promoção não é automática. Portanto, este projeto não comprova zero downtime, RPO zero regional ou recuperação total em menos de dois segundos. Consulte [os limites do desenho](docs/manual-tecnico.md#verificação-técnica-adicional-e-limites-do-laboratório).
 
 ## Código incluído
 
@@ -53,6 +53,8 @@ OKE, workers, Cache, Load Balancers, tráfego e demais serviços podem gerar cus
 ## Validação e procedência
 
 O ambiente de referência foi implantado e ensaiado na OCI. Dois participantes mantiveram suas próprias conversas em Vinhedo: as chamadas bem-sucedidas levaram 0,709 s e 0,872 s; o intervalo desde a interrupção foi 62,532 s e 66,638 s. São métricas daquela execução, sem compromisso de SLA. Veja o [registro de validação sem identificadores privados](docs/validacao-referencia.json).
+
+O [roteiro técnico visual](docs/manual-tecnico.md) traz ações numeradas, prints com marcações e etapas separadas para São Paulo e Vinhedo. A [referência técnica detalhada](docs/referencia-tecnica.md) reúne os detalhes de engenharia.
 
 A versão parametrizada tem testes locais e workflow de validação de código e construção das duas imagens. Uma implantação nova em outra tenancy precisa de validação própria de permissões, rede, disponibilidade e custos. As capturas dos manuais são reais; identificadores privados foram ocultados. O desenho representa a arquitetura publicada.
 
