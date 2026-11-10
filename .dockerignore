@@ -1,0 +1,11 @@
+.git
+.runtime
+.venv
+config/lab.json
+docs
+tests
+**/__pycache__
+**/*.key
+**/*.pem
+**/*.tfstate*
+.env*

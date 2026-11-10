@@ -1,0 +1,38 @@
+{
+  "compartment_id": "ocid1.compartment.oc1..REPLACE_ME",
+  "home_region": "sa-saopaulo-1",
+  "domain": "example.invalid",
+  "mcp_host": "mcp.example.invalid",
+  "dns_zone_id": "ocid1.dns-zone.oc1..REPLACE_ME",
+  "model_id": "ocid1.generativeaimodel.oc1.sa-saopaulo-1.REPLACE_ME",
+  "vinhedo_routing_profile_id": "ocid1.generativeairoutingprofile.oc1.sa-vinhedo-1.REPLACE_ME",
+  "registry": "gru.ocir.io",
+  "registry_namespace": "REPLACE_ME",
+  "repository_mcp": "resilient-ha-oci-mcp/server",
+  "repository_web": "resilient-ha-oci-mcp/web",
+  "image_version": "v1",
+  "regions": {
+    "sa-saopaulo-1": {
+      "context": "gru",
+      "cluster_id": "ocid1.cluster.oc1.sa-saopaulo-1.REPLACE_ME",
+      "vcn_id": "ocid1.vcn.oc1.sa-saopaulo-1.REPLACE_ME",
+      "lb_subnet_id": "ocid1.subnet.oc1.sa-saopaulo-1.REPLACE_ME",
+      "cache_subnet_id": "ocid1.subnet.oc1.sa-saopaulo-1.REPLACE_ME",
+      "cache_nsg_id": "ocid1.networksecuritygroup.oc1.sa-saopaulo-1.REPLACE_ME",
+      "worker_cidr": "10.10.10.0/24",
+      "nat_ip": "",
+      "workers": []
+    },
+    "sa-vinhedo-1": {
+      "context": "vcp",
+      "cluster_id": "ocid1.cluster.oc1.sa-vinhedo-1.REPLACE_ME",
+      "vcn_id": "ocid1.vcn.oc1.sa-vinhedo-1.REPLACE_ME",
+      "lb_subnet_id": "ocid1.subnet.oc1.sa-vinhedo-1.REPLACE_ME",
+      "cache_subnet_id": "ocid1.subnet.oc1.sa-vinhedo-1.REPLACE_ME",
+      "cache_nsg_id": "ocid1.networksecuritygroup.oc1.sa-vinhedo-1.REPLACE_ME",
+      "worker_cidr": "10.20.10.0/24",
+      "nat_ip": "",
+      "workers": []
+    }
+  }
+}

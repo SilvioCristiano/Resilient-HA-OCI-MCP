@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-11-10T01:26:17.387621+00:00",
+  "url": "https://racing-brazil-ai.tech/chat/",
+  "public_tls_verified": true,
+  "participant_control_denied": true,
+  "presenter_authenticated": true,
+  "two_participants_isolated": true,
+  "context_preserved": true,
+  "primary_restored": true,
+  "restore_via_region": "sa-vinhedo-1",
+  "zero_downtime_demonstrated": false,
+  "total_recovery_under_two_seconds": false,
+  "participants": [
+    {
+      "app_region": "sa-vinhedo-1",
+      "history_messages": 4,
+      "session_revision": 2,
+      "request_seconds": 0.709,
+      "since_fault_seconds": 62.532
+    },
+    {
+      "app_region": "sa-vinhedo-1",
+      "history_messages": 4,
+      "session_revision": 2,
+      "request_seconds": 0.872,
+      "since_fault_seconds": 66.638
+    }
+  ],
+  "portable_package_tests": {
+    "unittest_passed": 18,
+    "live_customer_tenancy_provisioning_performed": false
+  },
+  "scope": "Falha dos pods MCP primários. Cache gravável e inferência continuam em São Paulo. Capturas e medições de referência, não SLA."
+}

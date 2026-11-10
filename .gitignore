@@ -1,0 +1,16 @@
+.runtime/
+.rendered/
+.venv/
+__pycache__/
+*.pyc
+*.key
+*.pem
+*.p12
+*.tfstate*
+*.tfvars
+.env
+.env.*
+config/lab.json
+kubeconfig*
+.DS_Store
+docs/_qa/

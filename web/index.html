@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="demo-csrf" content="__DEMO_CSRF__"><meta name="session-id" content="__SESSION_ID__"><meta name="role" content="__ROLE__">
+  <title>OCI Brazil AI · Laboratório de resiliência</title>
+  <link rel="stylesheet" href="/chat/style.css"><script src="/chat/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="wordmark" href="/chat/">ORACLE <span>RED BULL RACING</span></a><div class="event-title">RACING TO AI <b>MCP / RESILIÊNCIA</b><span id="clock"></span></div></header>
+  <main>
+    <section class="hero"><div><p class="eyebrow">SÃO PAULO ↔ VINHEDO · LABORATÓRIO</p><h1>O servidor muda.<br>A conversa continua.</h1><p class="lead">Converse com OCI Generative AI e acompanhe a troca de região sem perder o contexto.</p><div class="hero-meta"><span>MCP STATELESS</span><span>CONTEXTO NO REDIS</span></div></div><div class="race-art"><img src="/chat/racing-car.webp" alt="Carro Oracle Red Bull Racing em pista"></div></section>
+    <div class="audience-row"><div><span class="tag" id="role-label">PARTICIPANTE</span><span class="muted"> Sua conversa é individual. O apresentador conduz as interrupções do laboratório.</span></div><button id="new-session" class="subtle">＋ Nova conversa</button></div>
+    <section class="acts" aria-label="Roteiro da apresentação">
+      <button id="act1" class="act"><span class="act-number">01</span><span><strong>Iniciar o contexto</strong><small>Nome, período e conta na mesma sessão</small></span><span class="act-indicator">○</span></button>
+      <!-- PRESENTER --><button id="act2" class="act" disabled><span class="act-number">02</span><span><strong>Interromper o MCP primário</strong><small>Falha real dos pods de São Paulo</small></span><span class="act-indicator">○</span></button><!-- /PRESENTER -->
+      <button id="act3" class="act"><span class="act-number">03</span><span><strong>Testar a memória</strong><small>Perguntar sem repetir os detalhes</small></span><span class="act-indicator">○</span></button>
+    </section>
+    <div class="workspace">
+      <section class="chat panel" aria-label="Conversa com OCI Generative AI">
+        <div class="panel-head"><div class="assistant-avatar">✦</div><div><h2>Conversa com OCI GenAI</h2><span class="muted">Meta Llama 3.3 70B · MCP stateless · contexto no Redis</span></div><span id="route-badge" class="badge neutral">Verificando rota…</span></div>
+        <div id="connection-banner" class="connection-banner" hidden></div>
+        <div id="messages" class="messages" aria-live="polite"><div class="welcome"><div class="welcome-orbit">↔</div><h2>O servidor pode mudar.<br>A conversa continua.</h2><p>Comece com o exemplo do roteiro. Depois que o apresentador interromper o primário, faça uma pergunta que depende da primeira mensagem.</p><button id="example" class="primary">Usar exemplo da apresentação ↗</button><small>Os valores financeiros são fictícios, apenas para esta demonstração.</small></div></div>
+        <form id="chat-form"><label for="prompt" class="sr-only">Sua mensagem</label><textarea id="prompt" rows="2" maxlength="8000" placeholder="Converse com o laboratório… Enter para enviar, Shift+Enter para nova linha."></textarea><div class="composer-bottom"><span id="composer-status">As respostas usam o endpoint global real.</span><button id="send" type="submit" class="primary">Enviar <span>↑</span></button></div></form>
+        <div class="session-line"><span class="dot"></span><span>Sessão</span><code id="session-id"></code><span class="session-tail">Sessão individual · histórico compartilhado entre as regiões.</span></div>
+      </section>
+      <aside class="telemetry" aria-label="Telemetria da demonstração">
+        <section class="panel regional"><div class="section-head"><h2>Regiões</h2><span class="tiny-label">AO VIVO</span></div>
+          <div id="region-gru" class="region-card"><div class="region-top"><span class="region-symbol">SP</span><div><strong>São Paulo</strong><code>sa-saopaulo-1</code></div><span class="region-health badge neutral">Verificando</span></div><div class="region-meta"><span>PRIMÁRIA</span><span class="region-probe">HTTPS /readyz</span></div></div>
+          <div id="region-vcp" class="region-card"><div class="region-top"><span class="region-symbol">VI</span><div><strong>Vinhedo</strong><code>sa-vinhedo-1</code></div><span class="region-health badge neutral">Verificando</span></div><div class="region-meta"><span>SECUNDÁRIA</span><span class="region-probe">HTTPS /readyz</span></div></div>
+          <div class="dns-line"><span>DNS global</span><code id="dns-answer">—</code></div><div id="oci-probes" class="source-note">DNS OCI com health checks externos; a tela mostra sondas HTTPS da aplicação.</div><p class="source-note">Sondas do painel a cada 4 s; monitor DNS OCI a cada 10 s. A rota ativa é confirmada por uma resposta MCP.</p>
+        </section>
+        <section class="panel context-panel"><div class="section-head"><h2>Prova de contexto</h2><span id="context-badge" class="badge neutral">Aguardando conversa</span></div><dl>
+          <div><dt>Última resposta</dt><dd id="answer-region">—</dd></div><div><dt>Histórico carregado</dt><dd id="history">—</dd></div><div><dt>Revisão no Redis</dt><dd id="revision">—</dd></div><div><dt>Requisição bem-sucedida</dt><dd id="latency">—</dd></div><div><dt>Espera desta mensagem</dt><dd id="elapsed">—</dd></div><div><dt>Desde a interrupção</dt><dd id="since-fault">—</dd></div><div><dt>Troca de região</dt><dd id="region-change">Ainda não observada</dd></div>
+        </dl><div id="semantic-proof" class="semantic" hidden></div></section>
+        <!-- PRESENTER --><section class="panel controls"><div class="section-head"><h2>Controle do ensaio</h2><span id="admin-phase" class="tiny-label">LOCAL</span></div><p id="admin-message">Preparando controles…</p><div class="control-buttons"><button id="interrupt" class="danger">Interromper São Paulo</button><button id="restore" class="subtle" disabled>Restaurar / encerrar</button></div><p id="restore-countdown" class="source-note" hidden></p><button id="logout" class="subtle">Sair do modo apresentador</button></section><!-- /PRESENTER -->
+      </aside>
+    </div>
+    <section class="panel events-panel"><div class="section-head"><h2>Linha do tempo</h2><span class="muted">Eventos observados nesta execução</span></div><div id="events" class="events" aria-live="polite"></div></section>
+    <footer><div><b>ORACLE RACING TO AI</b><p>POC educacional inspirada no Oracle Red Bull Racing. Não é um sistema oficial da equipe. Use somente dados fictícios. <a href="https://www.oracle.com/a/ocom/img/cbgfull-2026-orbr-car-v3.webp">Imagem: Oracle</a>.</p><p>Participação: até 6 mensagens/minuto por conversa e 60/minuto no total; limites globais de 600/hora e 2.000/dia. Sua sessão é individual.</p><p><strong>Escopo:</strong> falha dos pods MCP. O Redis gravável e a execução GenAI continuam em São Paulo. Reconexão por DNS pode interromper requisições; os tempos exibidos são medidos.</p></div><a href="/chat/presenter">Acesso do apresentador ↗</a></footer>
+  </main>
+</body></html>
