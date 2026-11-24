@@ -106,7 +106,7 @@ O failover depende das sondas, da política DNS e dos caches de resolução. Pod
 
 ## 6 Entrar como apresentador
 
-Abra **https://racing-brazil-ai.tech/chat/presenter**. Digite a senha fornecida pelo responsável técnico e clique em **Entrar**. Não divulgue essa senha ao público. Ela não está no GitHub nem neste manual.
+Abra **https://racing-br.com/presenter**. Digite a senha fornecida pelo responsável técnico e clique em **Entrar**. Não divulgue essa senha ao público. Ela não está no GitHub nem neste manual.
 
 ![Figura 5 Entrada do apresentador](images/usuario-login.png)
 
