@@ -8,7 +8,7 @@ Autor do laboratório: Silvio Cristiano. Edição de referência: 9 de novembro 
 
 ## 1 Acessar o chat
 
-Abra **https://racing-brazil-ai.tech/chat/** no navegador do computador ou celular. Não é necessário instalar um cliente MCP. Em uma implantação do cliente, utilize o domínio informado pelo responsável técnico.
+Abra **https://racing-br.com/chat/** no navegador do computador ou celular. Não é necessário instalar um cliente MCP. Em uma implantação do cliente, utilize o domínio informado pelo responsável técnico.
 
 Na entrada normal aparece o rótulo **PARTICIPANTE**. Essa visão permite conversar, iniciar uma nova conversa e acompanhar a telemetria. Ela não apresenta botões de interrupção ou restauração.
 
